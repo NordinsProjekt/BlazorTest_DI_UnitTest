@@ -25,7 +25,9 @@ namespace BlazorWebDI.Classes
 
         public string NewPerson(string person)
         {
-            return "Fail";
+            if (person == null || Equals(""))
+                return "Fail";
+            return "Success";
         }
 
         public string SetPerson(string person, int id)

@@ -13,7 +13,9 @@ namespace BlazorWebDI.Classes
 
         public string DeletePerson(int id)
         {
-            throw new NotImplementedException();
+            if (id >= personArray.Count || id<0)
+                return "Fail";
+            return "Success";
         }
 
         public List<string> GetAllPeople()
@@ -23,18 +25,25 @@ namespace BlazorWebDI.Classes
 
         public string GetPerson(int id)
         {
-            throw new NotImplementedException();
+            return personArray[id];
         }
 
         public string NewPerson(string person)
         {
+            if (person == null || Equals(""))
+                return "Fail";
             personArray.Add(person);
             return "Success";
         }
 
         public string SetPerson(string person, int id)
         {
-            throw new NotImplementedException();
+            if (person == null || person == "")
+                return "Fail";
+            if (id >= personArray.Count || id < 0)
+                return "Fail";
+            
+            return "Success";
         }
 
         private void SeedList()
