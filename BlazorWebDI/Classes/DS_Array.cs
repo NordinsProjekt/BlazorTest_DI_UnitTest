@@ -30,7 +30,7 @@ namespace BlazorWebDI.Classes
 
         public string NewPerson(string person)
         {
-            if (person == null || Equals(""))
+            if (person == null || person.Equals(""))
                 return "Fail";
             personArray.Add(person);
             return "Success";

@@ -8,7 +8,7 @@ namespace UnitTest
     {
         IDataSource _data = new DS_Array();
         [TestMethod]
-        public void GetAllPersonNotNull()
+        public void GetAllPersonsNotNull()
         {
             var arrPeople = _data.GetAllPeople();
             Assert.IsNotNull(arrPeople);
