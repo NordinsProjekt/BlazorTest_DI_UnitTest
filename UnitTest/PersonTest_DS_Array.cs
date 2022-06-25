@@ -73,5 +73,21 @@ namespace UnitTest
             var answer = _data.SetPerson("", 2);
             Assert.AreEqual(answer, "Fail");
         }
+        [TestMethod]
+        public void ConfirmThatPersonGotChanged()
+        {
+            var personBeforeChange = _data.GetPerson(1);
+            _data.SetPerson("Testperson1", 1);
+            var personAfterChange = _data.GetPerson(1);
+            Assert.AreNotEqual(personBeforeChange, personAfterChange);
+        }
+        [TestMethod]
+        public void ConfirmThatPersonDidntChanged()
+        {
+            var personBeforeChange = _data.GetPerson(1);
+            _data.SetPerson(personBeforeChange, 1);
+            var personAfterChange = _data.GetPerson(1);
+            Assert.AreEqual(personBeforeChange, personAfterChange);
+        }
     }
 }

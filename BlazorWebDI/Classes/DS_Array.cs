@@ -42,7 +42,7 @@ namespace BlazorWebDI.Classes
                 return "Fail";
             if (id >= personArray.Count || id < 0)
                 return "Fail";
-            
+            personArray[id] = person;
             return "Success";
         }
 
