@@ -1,8 +1,10 @@
-﻿namespace DataSources
+﻿using Rules;
+namespace DataSources
 {
     public class DS_Models : IDataSource
     {
         public List<dto_people> PersonList = new List<dto_people>();
+
         public DS_Models()
         {
             SeedData();
@@ -32,6 +34,17 @@
         public string NewPerson(string person)
         {
             var dto_p = person.Split(" ");
+            if (dto_p.Length >= 2)
+                PersonList.Add(new dto_people() { Firstname = dto_p[0], Lastname = dto_p[1] });
+            else
+                return "Fail";
+            return "Success";
+        }
+
+        public string NewPerson()
+        {
+            B_Rules rules = new B_Rules();
+            var dto_p = rules.GeneratePerson().Split(" ");
             if (dto_p.Length >= 2)
                 PersonList.Add(new dto_people() { Firstname = dto_p[0], Lastname = dto_p[1] });
             else

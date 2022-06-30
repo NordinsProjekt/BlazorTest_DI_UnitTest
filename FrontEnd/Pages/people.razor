@@ -1,14 +1,18 @@
 ﻿@page "/people"
 @inject DataSources.IDataSource _peopleData
-<h3>People</h3>
-@foreach (var people in _peopleData)
-{
-    <p>peo</p>
-}
-@code {
 
-    protected override OnInitialized()
+<PageTitle>People</PageTitle>
+<h3>People</h3>
+@foreach (var people in _peopleData.GetAllPeople())
+{
+    <p>@people.ToString()</p>
+}
+<button class="btn btn-primary" @onclick="GeneratePerson">Add Random Person</button>
+
+@code {
+    public void GeneratePerson()
     {
-        _peopleData.Get
+        _peopleData.NewPerson();
     }
+
 }

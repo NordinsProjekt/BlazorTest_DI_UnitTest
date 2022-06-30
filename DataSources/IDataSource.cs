@@ -9,6 +9,7 @@ namespace DataSources
         public string GetPerson(int id);
         //Return fail or success
         public string NewPerson(string person);
+        public string NewPerson();
         public string DeletePerson(int id);
         public string SetPerson(string person, int id);
     }

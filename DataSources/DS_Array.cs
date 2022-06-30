@@ -36,6 +36,11 @@
             return "Success";
         }
 
+        public string NewPerson()
+        {
+            throw new NotImplementedException();
+        }
+
         public string SetPerson(string person, int id)
         {
             if (person == null || person == "")
