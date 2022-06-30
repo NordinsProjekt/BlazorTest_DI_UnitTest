@@ -1,6 +1,4 @@
-﻿using BlazorWebDI.Interfaces;
-
-namespace BlazorWebDI.Classes
+﻿namespace DataSources
 {
     public class DS_Array : IDataSource
     {
@@ -25,6 +23,8 @@ namespace BlazorWebDI.Classes
 
         public string GetPerson(int id)
         {
+            if (id >= personArray.Count || id < 0)
+                throw new IndexOutOfRangeException();
             return personArray[id];
         }
 

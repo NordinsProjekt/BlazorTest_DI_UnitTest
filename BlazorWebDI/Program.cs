@@ -1,6 +1,5 @@
 using BlazorWebDI;
-using BlazorWebDI.Classes;
-using BlazorWebDI.Interfaces;
+using DataSources;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 

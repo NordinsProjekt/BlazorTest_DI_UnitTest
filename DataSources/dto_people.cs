@@ -1,6 +1,6 @@
-﻿namespace BlazorWebDI.Models
+﻿namespace DataSources
 {
-    public class People
+    public class dto_people
     {
         public string Firstname { get; set; }
         public string Lastname { get; set; }

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BlazorWebDI.Interfaces
+namespace DataSources
 {
     public interface IDataSource
     {

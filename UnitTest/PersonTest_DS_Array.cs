@@ -1,6 +1,4 @@
-using BlazorWebDI.Classes;
-using BlazorWebDI.Interfaces;
-
+using DataSources;
 namespace UnitTest
 {
     [TestClass]
@@ -30,6 +28,18 @@ namespace UnitTest
         {
             var person = _data.GetPerson(1);
             Assert.IsNotNull(person);
+        }
+        [TestMethod]
+        [ExpectedException (typeof(IndexOutOfRangeException))]
+        public void GetPersonWithOutOfIndex_OverIndex_ReturnIndexOutOfBounds()
+        {
+            var person = _data.GetPerson(9999);
+        }
+        [TestMethod]
+        [ExpectedException(typeof(IndexOutOfRangeException))]
+        public void GetPersonWithOutOfIndex_UnderIndex_ReturnIndexOutOfBounds()
+        {
+            var person = _data.GetPerson(-8);
         }
         [TestMethod]
         public void DeletePerson_ReturnSuccess()

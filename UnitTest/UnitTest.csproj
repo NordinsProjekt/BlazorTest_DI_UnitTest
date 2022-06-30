@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BlazorWebDI\BlazorWebDI.csproj" />
+    <ProjectReference Include="..\DataSources\DataSources.csproj" />
   </ItemGroup>
 
 </Project>

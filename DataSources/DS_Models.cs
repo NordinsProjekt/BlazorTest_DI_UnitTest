@@ -1,11 +1,8 @@
-﻿using BlazorWebDI.Interfaces;
-using BlazorWebDI.Models;
-
-namespace BlazorWebDI.Classes
+﻿namespace DataSources
 {
     public class DS_Models : IDataSource
     {
-        public List<People> PersonList = new List<People>();
+        public List<dto_people> PersonList = new List<dto_people>();
         public DS_Models()
         {
             SeedData();
@@ -36,7 +33,7 @@ namespace BlazorWebDI.Classes
         {
             var dto_p = person.Split(" ");
             if (dto_p.Length >= 2)
-                PersonList.Add(new People() { Firstname = dto_p[0], Lastname = dto_p[1] });
+                PersonList.Add(new dto_people() { Firstname = dto_p[0], Lastname = dto_p[1] });
             else
                 return "Fail";
             return "Success";
@@ -48,11 +45,11 @@ namespace BlazorWebDI.Classes
         }
         private void SeedData()
         {
-            People tempPerson = new People() { Firstname = "Test", Lastname = "Johansson", Age = 28};
+            dto_people tempPerson = new dto_people() { Firstname = "Test", Lastname = "Johansson", Age = 28};
             PersonList.Add(tempPerson);
-            tempPerson = new People() { Firstname = "Rune", Lastname = "Johansson", Age = 87};
+            tempPerson = new dto_people() { Firstname = "Rune", Lastname = "Johansson", Age = 87};
             PersonList.Add(tempPerson);
-            tempPerson = new People() { Firstname = "Julia", Lastname = "Karlsson", Age = 35};
+            tempPerson = new dto_people() { Firstname = "Julia", Lastname = "Karlsson", Age = 35};
             PersonList.Add(tempPerson);
         }
 

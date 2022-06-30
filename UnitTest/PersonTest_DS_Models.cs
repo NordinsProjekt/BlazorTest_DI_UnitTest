@@ -1,5 +1,4 @@
-﻿using BlazorWebDI.Classes;
-using BlazorWebDI.Interfaces;
+﻿using DataSources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
