@@ -24,6 +24,12 @@ namespace UnitTest
             Assert.AreEqual(answer,"Success");
         }
         [TestMethod]
+        public void CreateANewPersonNoParameters_ReturnSuccess()
+        {
+            var answer = _data.NewPerson();
+            Assert.AreEqual(answer, "Success");
+        }
+        [TestMethod]
         public void GetPersonWithID_NotNull()
         {
             var person = _data.GetPerson(1);

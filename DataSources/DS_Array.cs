@@ -1,4 +1,5 @@
-﻿namespace DataSources
+﻿using Rules;
+namespace DataSources
 {
     public class DS_Array : IDataSource
     {
@@ -38,7 +39,9 @@
 
         public string NewPerson()
         {
-            throw new NotImplementedException();
+            B_Rules _rules = new B_Rules();
+            personArray.Add(_rules.GeneratePerson());
+            return "Success";
         }
 
         public string SetPerson(string person, int id)
