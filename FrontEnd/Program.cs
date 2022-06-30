@@ -1,5 +1,4 @@
-using BlazorUI;
-using BlazorWebDI;
+using FrontEnd;
 using DataSources;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;

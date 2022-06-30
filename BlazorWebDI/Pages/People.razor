@@ -1,0 +1,10 @@
+﻿@page "/people"
+@inject DataSources.IDataSource _personData;
+<h3>People</h3>
+@foreach (var person in _personData.GetAllPeople())
+{
+    <p>@person</p>
+}
+@code {
+
+}
