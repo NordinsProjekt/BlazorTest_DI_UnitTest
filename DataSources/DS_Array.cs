@@ -14,6 +14,7 @@ namespace DataSources
         {
             if (id >= personArray.Count || id<0)
                 return "Fail";
+            personArray.RemoveAt(id);
             return "Success";
         }
 

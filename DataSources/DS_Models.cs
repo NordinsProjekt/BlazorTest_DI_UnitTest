@@ -3,7 +3,8 @@ namespace DataSources
 {
     public class DS_Models : IDataSource
     {
-        public List<dto_people> PersonList = new List<dto_people>();
+        private List<dto_people> PersonList = new List<dto_people>();
+        private B_Rules rules = new B_Rules();
 
         public DS_Models()
         {
@@ -11,7 +12,10 @@ namespace DataSources
         }
         public string DeletePerson(int id)
         {
-            throw new NotImplementedException();
+            if (id >= PersonList.Count || id<0)
+                return "Fail";
+            PersonList.RemoveAt(id);
+            return "Success";
         }
 
         public List<string> GetAllPeople()
@@ -43,10 +47,9 @@ namespace DataSources
 
         public string NewPerson()
         {
-            B_Rules rules = new B_Rules();
-            var dto_p = rules.GeneratePerson().Split(" ");
-            if (dto_p.Length >= 2)
-                PersonList.Add(new dto_people() { Firstname = dto_p[0], Lastname = dto_p[1] });
+            var p = rules.GeneratePerson().Split(" ");
+            if (p.Length >= 2)
+                PersonList.Add(new dto_people() { Firstname = p[0], Lastname = p[1] });
             else
                 return "Fail";
             return "Success";
