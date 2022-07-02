@@ -1,5 +1,5 @@
 using DataSources;
-using Shared.Interfaces;
+using SharedProject.Interfaces;
 namespace UnitTest
 {
     [TestClass]

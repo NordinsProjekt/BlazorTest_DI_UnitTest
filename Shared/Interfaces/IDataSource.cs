@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Shared.Interfaces
+namespace SharedProject.Interfaces
 {
     public interface IDataSource
     {

@@ -1,6 +1,6 @@
 ﻿using ds_EntityFramework_MSSQL.Models;
 using ds_EntityFramework_MSSQL;
-using Shared.Interfaces;
+using SharedProject.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
