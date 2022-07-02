@@ -1,5 +1,6 @@
 using FrontEnd;
 using DataSources;
+using Shared.Interfaces;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
