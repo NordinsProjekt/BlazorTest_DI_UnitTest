@@ -4,6 +4,7 @@ namespace DataSources
     public class DS_Array : IDataSource
     {
         private List<string> personArray = new List<string>();
+        IRules _rules = new B_Rules();
 
         public DS_Array()
         {
@@ -40,7 +41,7 @@ namespace DataSources
 
         public string NewPerson()
         {
-            B_Rules _rules = new B_Rules();
+            
             personArray.Add(_rules.GeneratePerson());
             return "Success";
         }

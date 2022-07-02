@@ -4,7 +4,7 @@ namespace DataSources
     public class DS_Models : IDataSource
     {
         private List<dto_people> PersonList = new List<dto_people>();
-        private B_Rules rules = new B_Rules();
+        private IRules rules = new B_Rules();
 
         public DS_Models()
         {

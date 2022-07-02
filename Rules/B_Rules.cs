@@ -7,7 +7,7 @@ using Rules.BuisnessModels;
 
 namespace Rules
 {
-    public class B_Rules
+    public class B_Rules : IRules
     {
         public B_Rules()
         {
