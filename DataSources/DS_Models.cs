@@ -1,5 +1,6 @@
 ﻿using Rules;
 using SharedProject.Interfaces;
+using SharedProject.DTO;
 namespace DataSources
 {
     public class DS_Models : IDataSource
