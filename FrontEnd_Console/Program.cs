@@ -7,6 +7,7 @@ namespace FrontEnd_Console
     {
         //Ger consollen en datakälla
         private static IDataSource _data = new MySQL();
+        //private static IDataSource _data = new DS_Models();
         //private static IDataSource _data = new DS_Array();
 
         private static bool runIt = true;

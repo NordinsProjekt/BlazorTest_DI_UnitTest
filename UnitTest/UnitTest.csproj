@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DataSources\DataSources.csproj" />
+    <ProjectReference Include="..\DS_MySQL\DS_MySQL.csproj" />
   </ItemGroup>
 
 </Project>

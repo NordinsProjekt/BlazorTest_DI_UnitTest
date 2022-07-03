@@ -12,11 +12,14 @@ namespace DS_MySQL
     public class MySQL : IDataSource
     {
         string connectionString = @"server=localhost;userid=root;password=;database=mypeople";
-        private List<dto_people> TalkToMySQL(string sql, string parameters)
+        private List<dto_people> TalkToMySQL(string sql, string[,] paramList)
         {
             using var con = new MySqlConnection(connectionString);
             con.Open();
             var cmd = new MySqlCommand(sql, con);
+            if (paramList != null)
+                for (int i = 0; i < paramList.GetLength(0); i++)
+                    cmd.Parameters.AddWithValue(paramList[i, 0], paramList[i, 1]);
             MySqlDataReader myReader = cmd.ExecuteReader();
             List<dto_people> result = new List<dto_people>();
             while (myReader.Read())
@@ -34,7 +37,8 @@ namespace DS_MySQL
 
         public List<string> GetAllPeople()
         {
-            IEnumerable<dto_people> result = TalkToMySQL("SELECT * FROM person;","");
+            string[,] parameters = new string[0, 0] { };
+            IEnumerable<dto_people> result = TalkToMySQL("SELECT * FROM person;",parameters);
             List<string> peopleList = new List<string>();
             foreach (var person in result)
                 peopleList.Add(person.Firstname +" " + person.Lastname);
@@ -43,6 +47,12 @@ namespace DS_MySQL
 
         public string GetPerson(int id)
         {
+            string[,] parameters = new string[1, 2] { { "@id", id.ToString() } };
+            IEnumerable<dto_people> result = TalkToMySQL("SELECT * FROM person WHERE Id = @id;", parameters);
+            if (!result.Any())
+                throw new IndexOutOfRangeException("Index verkar inte finnas");
+            dto_people _p = result.First();
+            return _p.Firstname + " " + _p.Lastname;
             throw new NotImplementedException();
         }
 
