@@ -42,7 +42,6 @@ namespace DataSources
 
         public string NewPerson()
         {
-            
             personArray.Add(_rules.GeneratePerson());
             return "Success";
         }

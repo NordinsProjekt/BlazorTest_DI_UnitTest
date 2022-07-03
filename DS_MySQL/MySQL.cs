@@ -2,6 +2,7 @@
 using SharedProject.Interfaces;
 using MySql.Data.MySqlClient;
 using SharedProject.DTO;
+using Rules;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace DS_MySQL
     public class MySQL : IDataSource
     {
         string connectionString = @"server=localhost;userid=root;password=;database=mypeople";
+        IRules _rules = new B_Rules();
         private List<dto_people> TalkToMySQL(string sql, string[,] paramList)
         {
             using var con = new MySqlConnection(connectionString);
@@ -58,17 +60,48 @@ namespace DS_MySQL
 
         public string NewPerson(string person)
         {
-            throw new NotImplementedException();
+            var splitPerson = person.Split(" ");
+            if (splitPerson.Length == 2)
+                PrepareNewPersonToDatabase(new dto_people() { Firstname = splitPerson[0],Lastname = splitPerson[1] });
+            else
+                return "Fail";
+            return "Success";
         }
 
         public string NewPerson()
         {
-            throw new NotImplementedException();
+            var splitPerson = _rules.GeneratePerson().Split(" ");
+            if (splitPerson.Length == 2)
+                PrepareNewPersonToDatabase(new dto_people() { Firstname = splitPerson[0], Lastname = splitPerson[1] });
+            else
+                return "Fail";
+            return "Success";
         }
 
         public string SetPerson(string person, int id)
         {
             throw new NotImplementedException();
+        }
+
+        private bool PrepareNewPersonToDatabase(dto_people p)
+        {
+            string[,] parameters = new string[2, 2] { { "@Firstname", p.Firstname }, { "@Lastname", p.Lastname } };
+            string sql = "INSERT INTO person (Firstname,Lastname) VALUES (@Firstname,@Lastname);";
+            if (InsertIntoDatabase(sql, parameters))
+                return true;
+            return false;
+        }
+
+        private bool InsertIntoDatabase(string sql, string[,] paramList)
+        {
+            using var con = new MySqlConnection(connectionString);
+            con.Open();
+            var cmd = new MySqlCommand(sql, con);
+            if (paramList != null)
+                for (int i = 0; i < paramList.GetLength(0); i++)
+                    cmd.Parameters.AddWithValue(paramList[i, 0], paramList[i, 1]);
+            cmd.ExecuteNonQuery();
+            return true;
         }
     }
 }
