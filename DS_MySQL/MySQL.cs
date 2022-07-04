@@ -30,7 +30,8 @@ namespace DS_MySQL
                 result.Add(new dto_people()
                 {
                     Firstname = myReader.GetString("Firstname"),
-                    Lastname = myReader.GetString("Lastname")
+                    Lastname = myReader.GetString("Lastname"),
+                    Id = myReader.GetInt32("Id")
                 });
             return result;
         }
@@ -42,14 +43,11 @@ namespace DS_MySQL
             return "Fail";
         }
 
-        public List<string> GetAllPeople()
+        public List<dto_people> GetAllPeople()
         {
             string[,] parameters = new string[0, 0] { };
-            IEnumerable<dto_people> result = TalkToMySQL("SELECT * FROM person;",parameters);
-            List<string> peopleList = new List<string>();
-            foreach (var person in result)
-                peopleList.Add(person.Firstname +" " + person.Lastname);
-            return peopleList;
+            List<dto_people> result = TalkToMySQL("SELECT * FROM person ORDER BY Firstname,Lastname;",parameters);
+            return result;
         }
 
         public string GetPerson(int id)

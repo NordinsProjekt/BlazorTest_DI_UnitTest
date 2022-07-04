@@ -1,4 +1,5 @@
 using DataSources;
+using SharedProject.DTO;
 using SharedProject.Interfaces;
 namespace UnitTest
 {
@@ -16,7 +17,7 @@ namespace UnitTest
         public void GetAllPerson_GetListObjectBack()
         {
             var arrPeople = _data.GetAllPeople();
-            Assert.IsInstanceOfType(arrPeople, typeof(List<string>));
+            Assert.IsInstanceOfType(arrPeople, typeof(List<dto_people>));
         }
         [TestMethod]
         public void CreateANewPerson_ReturnSuccess()
@@ -69,7 +70,7 @@ namespace UnitTest
         [TestMethod]
         public void EditPerson_ReturnSuccess()
         {
-            var answer = _data.SetPerson("Hej2", 1);
+            var answer = _data.SetPerson("Hej 2", 1);
             Assert.AreEqual(answer,"Success");
         }
         [TestMethod]
@@ -94,7 +95,7 @@ namespace UnitTest
         public void ConfirmThatPersonGotChanged()
         {
             var personBeforeChange = _data.GetPerson(1);
-            _data.SetPerson("Testperson1", 1);
+            _data.SetPerson("Test person1", 1);
             var personAfterChange = _data.GetPerson(1);
             Assert.AreNotEqual(personBeforeChange, personAfterChange);
         }

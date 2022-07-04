@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using SharedProject.DTO;
 
 namespace SharedProject.Interfaces
 {
     public interface IDataSource
     {
         //Return test person
-        public List<string> GetAllPeople();
+        public List<dto_people> GetAllPeople();
         public string GetPerson(int id);
         //Return fail or success
         public string NewPerson(string person);

@@ -7,7 +7,6 @@ namespace FrontEnd_Console
     {
         //Ger consollen en datakälla
         private static IDataSource _data = new MySQL();
-        //private static IDataSource _data = new DS_Models();
         //private static IDataSource _data = new DS_Array();
 
         private static bool runIt = true;
@@ -98,7 +97,7 @@ namespace FrontEnd_Console
             Console.Clear();
             Console.WriteLine("-----:: Visa alla personer ::-----");
             foreach (var person in _data.GetAllPeople())
-                Console.WriteLine(person.ToString());
+                Console.WriteLine(person.Firstname +" "+ person.Lastname);
             Console.WriteLine("\n\nTryck på ENTER för att fortsätta");
             Console.ReadLine();
         }
@@ -118,11 +117,14 @@ namespace FrontEnd_Console
             Console.Clear();
             Console.WriteLine("-----:: Radera person ::-----");
             int x = 0;
-            foreach (var person in _data.GetAllPeople())
-                Console.WriteLine($"({x++}) {person.ToString()}");
+            var persons = _data.GetAllPeople();
+            foreach (var person in persons)
+                Console.WriteLine($"({x++}) {person.Firstname +" "+ person.Lastname}");
             Console.Write("Skriv in ett index: ");
-            string? index = Console.ReadLine();
-            CheckUserInputDeletePerson(index);
+            if (int.TryParse(Console.ReadLine(), out int index))
+                _data.DeletePerson(persons.ElementAt(index).Id);
+            else
+                throw new ArgumentException("Endast siffror tack");
         }
     }
 }
