@@ -47,7 +47,7 @@ namespace DataSources
         public string NewPerson()
         {
             dto_people p = StringToDTO_Person(_rules.GeneratePerson());
-            personArray.Append(p);
+            personArray.Add(p);
             return "Success";
         }
 

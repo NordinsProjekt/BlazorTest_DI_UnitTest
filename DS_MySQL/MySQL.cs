@@ -10,8 +10,6 @@ using System.Threading.Tasks;
 
 namespace DS_MySQL
 {
-    //TODO
-    //dto_person objektet skall skickas till frontenden, för indexet för person och listans position är inte samma.
     public class MySQL : IDataSource
     {
         string connectionString = @"server=localhost;userid=root;password=;database=mypeople";
@@ -57,7 +55,7 @@ namespace DS_MySQL
             if (!result.Any())
                 throw new IndexOutOfRangeException("Index verkar inte finnas");
             dto_people _p = result.First();
-            return _p.Firstname + " " + _p.Lastname;
+            return _p.GetFullname();
             throw new NotImplementedException();
         }
 

@@ -6,7 +6,7 @@
 <h3>People</h3>
 @foreach (var people in _peopleData.GetAllPeople())
 {
-    <p>@people.ToString()</p>
+    <p>@people.GetFullname()</p>
 }
 <button class="btn btn-primary" @onclick="GeneratePerson">Add Random Person</button>
 
