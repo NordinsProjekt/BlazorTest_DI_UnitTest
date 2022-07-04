@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 
 namespace DS_MySQL
 {
+    //TODO
+    //dto_person objektet skall skickas till frontenden, för indexet för person och listans position är inte samma.
     public class MySQL : IDataSource
     {
         string connectionString = @"server=localhost;userid=root;password=;database=mypeople";
@@ -34,7 +36,10 @@ namespace DS_MySQL
         }
         public string DeletePerson(int id)
         {
-            throw new NotImplementedException();
+            dto_people p = new dto_people() { Id = id };
+            if (PrepareDeletePersonFromDatabase(p))
+                return "Success";
+            return "Fail";
         }
 
         public List<string> GetAllPeople()
@@ -87,12 +92,21 @@ namespace DS_MySQL
         {
             string[,] parameters = new string[2, 2] { { "@Firstname", p.Firstname }, { "@Lastname", p.Lastname } };
             string sql = "INSERT INTO person (Firstname,Lastname) VALUES (@Firstname,@Lastname);";
-            if (InsertIntoDatabase(sql, parameters))
+            if (NonQueryToDatabase(sql, parameters))
                 return true;
             return false;
         }
 
-        private bool InsertIntoDatabase(string sql, string[,] paramList)
+        private bool PrepareDeletePersonFromDatabase(dto_people p)
+        {
+            string[,] parameters = new string[1, 2] { { "@id", p.Id.ToString() } };
+            string sql = "DELETE FROM person WHERE Id = @id;";
+            if (NonQueryToDatabase(sql, parameters))
+                return true;
+            return false;
+        }
+
+        private bool NonQueryToDatabase(string sql, string[,] paramList)
         {
             using var con = new MySqlConnection(connectionString);
             con.Open();
