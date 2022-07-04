@@ -14,6 +14,11 @@ namespace DS_MySQL
     {
         string connectionString = @"server=localhost;userid=root;password=;database=mypeople";
         IRules _rules = new B_Rules();
+
+        public MySQL()
+        {
+            //SeedData(); Skapar databas tabellen och informationen.
+        }
         private List<dto_people> TalkToMySQL(string sql, string[,] paramList)
         {
             using var con = new MySqlConnection(connectionString);
@@ -112,6 +117,28 @@ namespace DS_MySQL
                     cmd.Parameters.AddWithValue(paramList[i, 0], paramList[i, 1]);
             cmd.ExecuteNonQuery();
             return true;
+        }
+
+        private void SeedData()
+        {
+            string sql = @"CREATE TABLE `person` (
+                          `Id` int(11) NOT NULL,
+                          `Firstname` varchar(50) NOT NULL,
+                          `Lastname` varchar(50) NOT NULL,
+                          `Age` int(3) NOT NULL
+                        ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4; 
+                        INSERT INTO `person` (`Id`, `Firstname`, `Lastname`, `Age`) VALUES
+                        (2, 'Test', 'Testsson', 46),
+                        (3, 'Markus', 'Johansson', 0),
+                        (6, 'Peter', 'Nilsson', 0);
+
+                        ALTER TABLE `person`
+                          ADD PRIMARY KEY (`Id`);
+
+                        ALTER TABLE `person`
+                          MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+                        COMMIT;";
+            NonQueryToDatabase(sql, null);
         }
     }
 }
