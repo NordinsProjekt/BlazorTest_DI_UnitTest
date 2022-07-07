@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrontEnd_Console", "FrontEn
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Shared\Shared.csproj", "{62342F1E-3444-42DB-A790-B67CE30A5BD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DS_MySQL", "DS_MySQL\DS_MySQL.csproj", "{B6A9C7FB-B21F-4AF4-BAC4-4DFD2863F5DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DS_MySQL", "DS_MySQL\DS_MySQL.csproj", "{B6A9C7FB-B21F-4AF4-BAC4-4DFD2863F5DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DS_MySQL_EF", "DS_MySQL_EF\DS_MySQL_EF.csproj", "{3B95A8BE-EEF3-444F-BB0E-CCA677200F84}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{B6A9C7FB-B21F-4AF4-BAC4-4DFD2863F5DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6A9C7FB-B21F-4AF4-BAC4-4DFD2863F5DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6A9C7FB-B21F-4AF4-BAC4-4DFD2863F5DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B95A8BE-EEF3-444F-BB0E-CCA677200F84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B95A8BE-EEF3-444F-BB0E-CCA677200F84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B95A8BE-EEF3-444F-BB0E-CCA677200F84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B95A8BE-EEF3-444F-BB0E-CCA677200F84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

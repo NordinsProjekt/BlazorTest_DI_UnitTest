@@ -22,8 +22,9 @@ namespace FrontEnd_Console
             Console.WriteLine("-----:: People List ::-----");
             Console.WriteLine("(1) Visa listan");
             Console.WriteLine("(2) Lägg till Person");
-            Console.WriteLine("(3) Radera Person");
-            Console.WriteLine("(4) Avsluta");
+            Console.WriteLine("(3) Redigera Person");
+            Console.WriteLine("(4) Radera Person");
+            Console.WriteLine("(5) Avsluta");
             string? userChoice = Console.ReadLine();
             try
             {
@@ -83,13 +84,16 @@ namespace FrontEnd_Console
                     CreateNewPersonScreen();
                     break;
                 case 3:
-                    DeletePersonScreen();
+                    UpdatePersonScreen();
                     break;
                 case 4:
+                    DeletePersonScreen();
+                    break;
+                case 5:
                     runIt = false;
                     break;
                 default:
-                    throw new ArgumentException("Borde vara en siffra mellan 1-4");
+                    throw new ArgumentException("Borde vara en siffra mellan 1-5");
             }
         }
         static private void ShowAllPeopleScreen()
@@ -111,7 +115,13 @@ namespace FrontEnd_Console
             string? personName = Console.ReadLine();
             CheckUserInputCreateNewPerson(personName);
         }
-
+        static private void UpdatePersonScreen()
+        {
+            Console.Clear();
+            Console.WriteLine("-----:: Redigera person ::-----");
+            //Välj person att redigera
+            //Skriv in nytt namn för personen
+        }
         static private void DeletePersonScreen()
         {
             Console.Clear();

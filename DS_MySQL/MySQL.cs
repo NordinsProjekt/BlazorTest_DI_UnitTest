@@ -19,6 +19,10 @@ namespace DS_MySQL
         {
             //SeedData(); Skapar databas tabellen och informationen.
         }
+        public void SetConnectionString(string conn)
+        {
+            connectionString = conn;
+        }
         private List<dto_people> TalkToMySQL(string sql, string[,] paramList)
         {
             using var con = new MySqlConnection(connectionString);
@@ -61,7 +65,6 @@ namespace DS_MySQL
                 throw new IndexOutOfRangeException("Index verkar inte finnas");
             dto_people _p = result.First();
             return _p.GetFullname();
-            throw new NotImplementedException();
         }
 
         public string NewPerson(string person)
