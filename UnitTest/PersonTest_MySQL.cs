@@ -15,7 +15,7 @@ namespace UnitTest
         [TestMethod]
         public void GetSpecificPerson()
         {
-           string person = _data.GetPerson(1);
+           string person = _data.GetPerson(2);
            Assert.IsNotNull(person);
         }
         [TestMethod]

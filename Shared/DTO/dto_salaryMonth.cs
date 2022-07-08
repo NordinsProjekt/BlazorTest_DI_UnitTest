@@ -19,14 +19,22 @@ namespace SharedProject.DTO
          {
 
          }
+        //Reflection kontrollerar alla properties i objektet.
+        //Skickar false om något inte är satt
         public bool IsValid()
         {
-            //Reflection kontrollerar alla properties i objektet.
-            //Skickar false om något inte är satt
             PropertyInfo[] props = this.GetType().GetProperties();
             foreach (PropertyInfo prop in props)
-                if (prop.GetValue(this, null) == null || prop.GetValue(this, null).Equals(0))
+            {
+                if (prop.GetValue(this, null) == null)
                     return false;
+                if (prop.PropertyType == typeof(Int32))
+                    if ((int)prop.GetValue(this,null) == 0)
+                        return false;
+                if (prop.PropertyType == typeof(Double))
+                    if ((double)prop.GetValue(this, null) == 0)
+                        return false;
+            }
             return true;
         }
     }

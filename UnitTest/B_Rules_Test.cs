@@ -22,25 +22,5 @@ namespace UnitTest
             double salary = _rules.CalculateSalary(sm);
             Assert.AreEqual(salary, 260.60);
         }
-
-        [TestMethod]
-        public void Test_DTO_SalaryMonth_ShouldNotBeTrue()
-        {
-            dto_salaryMonth sm = new dto_salaryMonth();
-            sm.RatePerHour = 130.30;
-            sm.NumberOfHoursWorked = 2;
-            Assert.IsFalse(sm.IsValid());
-        }
-        [TestMethod]
-        public void Test_DTO_SalaryMonth_ShouldBeTrue()
-        {
-            dto_salaryMonth sm = new dto_salaryMonth();
-            sm.RatePerHour = 130.30;
-            sm.NumberOfHoursWorked = 2;
-            sm.Firstname = "Markus";
-            sm.Lastname = "Nordin";
-            sm.EmployeeNumber = 2;
-            Assert.IsTrue(sm.IsValid());
-        }
     }
 }
