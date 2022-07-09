@@ -21,15 +21,26 @@ namespace DS_MySQL_EF
         }
         public string DeletePerson(int id)
         {
-            People people = new People() { Id = id };
-            _peopleContext.Person.Remove(people);
+            People p = _peopleContext.Person.Where(x=>x.Id == id).FirstOrDefault();
+            _peopleContext.Person.Remove(p);
             _peopleContext.SaveChanges();
             return "Success";
         }
 
         public List<dto_people> GetAllPeople()
         {
-            throw new NotImplementedException();
+            var peopleList = _peopleContext.Person.ToList();
+            List<dto_people> people = new List<dto_people>();
+            foreach (var p in peopleList)
+            {
+                people.Add(new dto_people()
+                {
+                    Id = p.Id,
+                    Firstname = p.Firstname,
+                    Lastname = p.Lastname
+                });
+            }
+            return people;
         }
 
         public string GetPerson(int id)

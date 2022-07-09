@@ -31,9 +31,16 @@ namespace UnitTest
         public void AddPersonAndThenDeletePerson_ShouldReturnSuccessForBoth()
         {
             string answer = _data.NewPerson("Markus Nordin");
-            string answer2 = _data.DeletePerson(2);
+            var peopleList = _data.GetAllPeople();
+            string answer2 = _data.DeletePerson(peopleList.FirstOrDefault(x => x.Firstname == "Markus").Id);
             Assert.AreEqual(answer, "Success");
             Assert.AreEqual(answer2, "Success");
+        }
+        [TestMethod]
+        public void GetPeopleList_ShouldReceiveAListOfPeople()
+        {
+            var peopleList = _data.GetAllPeople();
+            Assert.IsInstanceOfType(peopleList, typeof(List<dto_people>));
         }
     }
 }
