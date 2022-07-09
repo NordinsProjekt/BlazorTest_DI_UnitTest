@@ -121,6 +121,7 @@ namespace FrontEnd_Console
         {
             Console.Clear();
             Console.WriteLine("-----:: Redigera person ::-----");
+            throw new NotImplementedException();
             //Välj person att redigera
             //Skriv in nytt namn för personen
         }

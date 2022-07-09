@@ -1,0 +1,19 @@
+﻿@page "/people"
+@using SharedProject.Interfaces
+@inject IDataSource _peopleData
+
+<PageTitle>People</PageTitle>
+<h3>People</h3>
+@foreach (var people in _peopleData.GetAllPeople())
+{
+    <p>@people.GetFullname()</p>
+}
+<button class="btn btn-primary" @onclick="GeneratePerson">Add Random Person</button>
+
+@code {
+    public void GeneratePerson()
+    {
+        _peopleData.NewPerson();
+    }
+
+}

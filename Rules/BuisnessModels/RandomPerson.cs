@@ -1,27 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Rules.BuisnessModels
 {
-    internal class RandomPerson
+    internal class RandomPerson : PersonBase
     {
         public string Firstname { get; set; }
         public string Lastname { get; set; }
-        private List<string> _firstname = new List<string>() 
+        private static readonly List<string> _firstname = new() 
         { "Jake","David","Emma","Julia","Peter"};
-        private List<string> _lastname = new List<string>()
+        private static readonly List<string> _lastname = new()
         { "Eriksson","Johansson","Karlsson","Nilsson"};
 
-        public bool Valid = false;
-        Random random = new Random();
+        Random random = new();
         public RandomPerson()
         {
             Firstname = GetRandomFirstname();
             Lastname = GetRandomLastname();
-            Valid = true;
         }
 
         private string GetRandomFirstname()
@@ -33,5 +32,6 @@ namespace Rules.BuisnessModels
         {
             return _lastname[random.Next(_lastname.Count)].ToString();
         }
+
     }
 }

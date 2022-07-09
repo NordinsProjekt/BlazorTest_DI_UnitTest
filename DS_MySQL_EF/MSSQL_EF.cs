@@ -14,10 +14,10 @@ namespace DS_MySQL_EF
     {
         IRules _rules = new B_Rules();
         PeopleContext _peopleContext = new PeopleContext();
-        private string connectionString = "";
         public MSSQL_EF()
         {
-            //SeedDatabase();
+            if (_peopleContext.Database.EnsureCreated())
+                SeedDatabase();
         }
         public string DeletePerson(int id)
         {
@@ -54,8 +54,7 @@ namespace DS_MySQL_EF
 
         public string NewPerson(string person)
         {
-            var p = person.Split(" ");
-            People pers = new People() { Firstname = p[0], Lastname = p[1] };
+            People pers = AssemblePerson(person);
             _peopleContext.Person.Add(pers);
             _peopleContext.SaveChanges();
             return "Success";
@@ -63,7 +62,11 @@ namespace DS_MySQL_EF
 
         public string NewPerson()
         {
-            throw new NotImplementedException();
+            string personName =  _rules.GeneratePerson();
+            People p = AssemblePerson(personName);
+            _peopleContext.Person.Add(p);
+            _peopleContext.SaveChanges();
+            return "Success";
         }
 
         public string SetPerson(string person, int id)
@@ -76,6 +79,15 @@ namespace DS_MySQL_EF
             People p = new People() { Firstname = "Test", Lastname = "Testsson"};
             _peopleContext.Add(p);
             _peopleContext.SaveChanges();
+        }
+
+        private People AssemblePerson(string fullname)
+        {
+            var p = fullname.Split(" ");
+            if (p.Length < 2)
+                throw new ArgumentException("Ett förnamn och ett efternamn");
+            People pers = new People { Firstname = p[0], Lastname = p[1] };
+            return pers;
         }
     }
 }

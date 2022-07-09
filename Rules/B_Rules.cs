@@ -22,7 +22,7 @@ namespace Rules
         public string GeneratePerson()
         {
             RandomPerson randomPerson = new RandomPerson();
-            if (randomPerson.Valid)
+            if (randomPerson.IsValid())
                 return randomPerson.Firstname + " " + randomPerson.Lastname;
             else
                 throw new MissingFieldException("Kunde inte generera ett namn");
