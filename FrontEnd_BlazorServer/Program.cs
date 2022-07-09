@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using SharedProject.Interfaces;
+using DataSources;
 
 var builder = WebApplication.CreateBuilder(args);
 

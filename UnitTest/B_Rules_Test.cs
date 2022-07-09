@@ -30,7 +30,7 @@ namespace UnitTest
                 EmployeeName = "Markus Nordin",
                 BankAccountNumber = "e309ur34r",
                 RatePerHour = 270.54,
-                TimeWorked = 157.29
+                TimeWorked = 145.45
             };
             Assert.IsTrue(_rules.PaySalaryToEmployee(ps));
         }

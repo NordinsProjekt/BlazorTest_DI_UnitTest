@@ -40,7 +40,7 @@ namespace DataSources
             if (person == null || person.Equals(""))
                 return "Fail";
             dto_people p = StringToDTO_Person(person);
-            personArray.Append(p);
+            personArray.Add(p);
             return "Success";
         }
 
