@@ -8,8 +8,8 @@ namespace SharedProject.Interfaces
 {
     public interface IDataSourceControl
     {
-        public bool CreateDataSource();
-        public bool DeleteDataSource();
+        public bool CreateDataSource(string connectionString);
+        public bool DeleteDataSource(string connectionString);
         public bool SeedDataSource(string connectionString);
     }
 }

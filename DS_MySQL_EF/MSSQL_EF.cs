@@ -51,10 +51,7 @@ namespace DS_MSSQL_EF
             return p.Firstname + " " + p.Lastname;
 
         }
-        public string hej()
-        {
-            return "";
-        }
+
         public string NewPerson(string person)
         {
             People pers = AssemblePerson(person);

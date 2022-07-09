@@ -7,9 +7,9 @@ namespace FrontEnd_Console
     internal class Program
     {
         //Ger consollen en datakälla
-        //private static IDataSource _data = new MySQL();
+        private static IDataSource _data = new MySQL();
         //private static IDataSource _data = new MSSQL_EF();
-        private static IDataSource _data = new DS_Array();
+        //private static IDataSource _data = new DS_Array();
 
         private static bool runIt = true;
         static void Main(string[] args)

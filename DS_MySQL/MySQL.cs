@@ -3,6 +3,7 @@ using SharedProject.Interfaces;
 using MySql.Data.MySqlClient;
 using SharedProject.DTO;
 using Rules;
+using DS_MySQL;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,16 +14,35 @@ namespace DS_MySQL
     public class MySQL : IDataSource
     {
         string connectionString = @"server=localhost;userid=root;password=;database=mypeople";
+        IDataSourceControl _dbControl = new MySqlControl();
         IRules _rules = new B_Rules();
 
         public MySQL()
         {
             //TODO Kolla om databasen finns, annars skapa
-            //SeedData(); Skapar databas tabellen och informationen.
+            if (!CheckIfDatabaseExist("server = localhost; userid = root; password =;"))
+            {
+                _dbControl.CreateDataSource("server = localhost; userid = root; password =;");
+                _dbControl.SeedDataSource(connectionString);
+            }
         }
         public void SetConnectionString(string conn)
         {
             connectionString = conn;
+        }
+        private bool CheckIfDatabaseExist(string connectionString)
+        {
+            string sql = "SHOW DATABASES LIKE 'mypeople';";
+            return SendSqlToDatabase(sql,connectionString);
+        }
+
+        private bool SendSqlToDatabase(string sql,string connectionString)
+        {
+            using var con = new MySqlConnection(connectionString);
+            con.Open();
+            var cmd = new MySqlCommand(sql, con);
+            MySqlDataReader myReader = cmd.ExecuteReader();
+            return myReader.HasRows;
         }
         private List<dto_people> TalkToMySQL(string sql, string[,] paramList)
         {
@@ -121,12 +141,6 @@ namespace DS_MySQL
                     cmd.Parameters.AddWithValue(paramList[i, 0], paramList[i, 1]);
             cmd.ExecuteNonQuery();
             return true;
-        }
-
-        private void SeedData()
-        {
-            IDataSourceControl _dbC = new MySqlControl();
-            _dbC.SeedDataSource(connectionString);
         }
     }
 }

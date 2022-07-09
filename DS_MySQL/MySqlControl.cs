@@ -11,13 +11,18 @@ namespace DS_MySQL
     internal class MySqlControl : IDataSourceControl
     {
 
-        public bool CreateDataSource()
+        public bool CreateDataSource(string connectionString)
         {
-            throw new NotImplementedException();
+            string sql = @"SET SQL_MODE = 'NO_AUTO_VALUE_ON_ZERO';
+                        START TRANSACTION;
+                        SET time_zone = '+00:00';
+                        CREATE DATABASE IF NOT EXISTS `mypeople` DEFAULT CHARACTER SET utf8mb4 
+                        COLLATE utf8mb4_general_ci; USE `mypeople`; COMMIT; ";
+            SendToDatabase(sql, connectionString);
+            return true;
         }
 
-
-        public bool DeleteDataSource()
+        public bool DeleteDataSource(string connectionString)
         {
             throw new NotImplementedException();
         }

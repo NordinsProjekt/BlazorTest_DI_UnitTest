@@ -32,6 +32,5 @@ namespace Rules.BuisnessModels
         {
             return _lastname[random.Next(_lastname.Count)].ToString();
         }
-
     }
 }
