@@ -22,5 +22,28 @@ namespace UnitTest
             double salary = _rules.CalculateSalary(sm);
             Assert.AreEqual(salary, 260.60);
         }
+        [TestMethod]
+        public void TestPaymentFunction_ShouldReturnTrue()
+        {
+            DTO_PaySalary ps = new()
+            {
+                EmployeeName = "Markus Nordin",
+                BankAccountNumber = "e309ur34r",
+                RatePerHour = 270.54,
+                TimeWorked = 157.29
+            };
+            Assert.IsTrue(_rules.PaySalaryToEmployee(ps));
+        }
+        [TestMethod]
+        public void TestPaymentFunctionWithIncompleteDTO_ShouldReturnFalse()
+        {
+            DTO_PaySalary ps = new()
+            {
+                EmployeeName = "Markus Nordin",
+                BankAccountNumber = "e309ur34r",
+                RatePerHour = 270.54,
+            };
+            Assert.IsFalse(_rules.PaySalaryToEmployee(ps));
+        }
     }
 }

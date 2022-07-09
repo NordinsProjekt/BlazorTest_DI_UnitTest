@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using Rules;
 using SharedProject.Interfaces;
 using SharedProject.DTO;
-using DS_MySQL_EF.Models;
+using DS_MSSQL_EF.Models;
 
-namespace DS_MySQL_EF
+namespace DS_MSSQL_EF
 {
     public class MSSQL_EF : IDataSource
     {
@@ -76,8 +76,11 @@ namespace DS_MySQL_EF
 
         public void SeedDatabase()
         {
-            People p = new People() { Firstname = "Test", Lastname = "Testsson"};
-            _peopleContext.Add(p);
+            People p = new People() { Firstname = "Test", Lastname = "Testsson" };
+            PersonalInformation pi = new PersonalInformation() { BankAccountNumber = "35945473423",
+               PhoneNumber = "0548-45674", People = p 
+            };
+            _peopleContext.Add(pi);
             _peopleContext.SaveChanges();
         }
 
@@ -85,7 +88,7 @@ namespace DS_MySQL_EF
         {
             var p = fullname.Split(" ");
             if (p.Length < 2)
-                throw new ArgumentException("Ett förnamn och ett efternamn");
+                throw new ArgumentException("Ett förnamn och ett efternamn tack!!");
             People pers = new People { Firstname = p[0], Lastname = p[1] };
             return pers;
         }

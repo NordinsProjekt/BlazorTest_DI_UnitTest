@@ -11,5 +11,6 @@ namespace Rules
     {
         public string GeneratePerson();
         public double CalculateSalary(dto_salaryMonth sm);
+        public bool PaySalaryToEmployee(DTO_PaySalary ps);
     }
 }

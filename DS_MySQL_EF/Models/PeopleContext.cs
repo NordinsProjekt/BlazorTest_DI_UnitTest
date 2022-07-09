@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DS_MySQL_EF.Models
+namespace DS_MSSQL_EF.Models
 {
     public class PeopleContext : DbContext
     {
