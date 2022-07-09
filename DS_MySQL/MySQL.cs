@@ -17,6 +17,7 @@ namespace DS_MySQL
 
         public MySQL()
         {
+            //TODO Kolla om databasen finns, annars skapa
             //SeedData(); Skapar databas tabellen och informationen.
         }
         public void SetConnectionString(string conn)
@@ -124,24 +125,8 @@ namespace DS_MySQL
 
         private void SeedData()
         {
-            string sql = @"CREATE TABLE `person` (
-                          `Id` int(11) NOT NULL,
-                          `Firstname` varchar(50) NOT NULL,
-                          `Lastname` varchar(50) NOT NULL,
-                          `Age` int(3) NOT NULL
-                        ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4; 
-                        INSERT INTO `person` (`Id`, `Firstname`, `Lastname`, `Age`) VALUES
-                        (2, 'Test', 'Testsson', 46),
-                        (3, 'Markus', 'Johansson', 0),
-                        (6, 'Peter', 'Nilsson', 0);
-
-                        ALTER TABLE `person`
-                          ADD PRIMARY KEY (`Id`);
-
-                        ALTER TABLE `person`
-                          MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-                        COMMIT;";
-            NonQueryToDatabase(sql, null);
+            IDataSourceControl _dbC = new MySqlControl();
+            _dbC.SeedDataSource(connectionString);
         }
     }
 }
