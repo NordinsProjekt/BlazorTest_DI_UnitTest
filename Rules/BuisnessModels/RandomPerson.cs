@@ -12,9 +12,9 @@ namespace Rules.BuisnessModels
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         private static readonly List<string> _firstname = new() 
-        { "Jake","David","Emma","Julia","Peter"};
+        { "Jake","David","Emma","Julia","Peter","Gabriel","Paul"};
         private static readonly List<string> _lastname = new()
-        { "Eriksson","Johansson","Karlsson","Nilsson"};
+        { "Eriksson","Johansson","Karlsson","Nilsson","Johnsson","Larsson"};
 
         Random random = new();
         public RandomPerson()

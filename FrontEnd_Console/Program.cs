@@ -1,4 +1,5 @@
-﻿using DataSources;
+﻿using System;
+using DataSources;
 using SharedProject.Interfaces;
 using DS_MySQL;
 using DS_MSSQL_EF;
@@ -7,8 +8,8 @@ namespace FrontEnd_Console
     internal class Program
     {
         //Ger consollen en datakälla
-        private static IDataSource _data = new MySQL();
-        //private static IDataSource _data = new MSSQL_EF();
+        //private static IDataSource _data = new MySQL();
+        private static IDataSource _data = new MSSQL_EF();
         //private static IDataSource _data = new DS_Array();
 
         private static bool runIt = true;

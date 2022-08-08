@@ -45,5 +45,17 @@ namespace UnitTest
             };
             Assert.IsFalse(_rules.PaySalaryToEmployee(ps));
         }
+        [TestMethod]
+        public void TestIsValidWithPersonModel_ShouldReturnFalse()
+        {
+            dto_people p = new() { Age = 25, Firstname = "", Lastname = "Johansson",Id = 2 };
+            Assert.IsFalse(_rules.IsValid(p));
+        }
+        [TestMethod]
+        public void TestIsValidWithPersonModel_ShouldReturnTrue()
+        {
+            dto_people p = new() { Age = 25, Firstname = "d", Lastname = "Johansson", Id = 2 };
+            Assert.IsTrue(_rules.IsValid(p));
+        }
     }
 }
