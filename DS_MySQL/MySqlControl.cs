@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
-using SharedProject.Interfaces;
+using Rules.Interfaces;
 
 namespace DS_MySQL
 {

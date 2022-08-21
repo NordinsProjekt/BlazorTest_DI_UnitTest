@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Rules;
-using SharedProject.Interfaces;
-using SharedProject.DTO;
 using DS_MSSQL_EF.Models;
+using Rules.Interfaces;
+using Rules.DTO;
 
 namespace DS_MSSQL_EF
 {

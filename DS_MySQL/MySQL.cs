@@ -1,13 +1,13 @@
 ﻿using System;
-using SharedProject.Interfaces;
 using MySql.Data.MySqlClient;
-using SharedProject.DTO;
 using Rules;
 using DS_MySQL;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Rules.Interfaces;
+using Rules.DTO;
 
 namespace DS_MySQL
 {

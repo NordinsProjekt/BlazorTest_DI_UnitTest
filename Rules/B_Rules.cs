@@ -5,7 +5,8 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Rules.BuisnessModels;
-using SharedProject.DTO;
+using Rules.DTO;
+
 namespace Rules
 {
     public class B_Rules : IRules

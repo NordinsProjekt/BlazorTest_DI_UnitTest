@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Rules\Rules.csproj" />
-    <ProjectReference Include="..\Shared\Shared.csproj" />
   </ItemGroup>
 
 </Project>

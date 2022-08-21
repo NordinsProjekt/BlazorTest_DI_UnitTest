@@ -1,6 +1,6 @@
 ﻿using Rules;
-using SharedProject.Interfaces;
-using SharedProject.DTO;
+using Rules.DTO;
+using Rules.Interfaces;
 using System.Collections.Generic;
 
 namespace DataSources

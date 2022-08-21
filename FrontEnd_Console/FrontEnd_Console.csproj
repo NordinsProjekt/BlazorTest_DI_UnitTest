@@ -11,7 +11,6 @@
     <ProjectReference Include="..\DataSources\DataSources.csproj" />
     <ProjectReference Include="..\DS_MySQL\DS_MySQL.csproj" />
     <ProjectReference Include="..\DS_MySQL_EF\DS_MSSQL_EF.csproj" />
-    <ProjectReference Include="..\Shared\Shared.csproj" />
   </ItemGroup>
 
 </Project>
