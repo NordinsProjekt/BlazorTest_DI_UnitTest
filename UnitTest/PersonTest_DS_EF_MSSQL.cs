@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DS_MSSQL_EF;
-using SharedProject.Interfaces;
-using SharedProject.DTO;
+using Rules.DTO;
+using Rules.Interfaces;
 
 namespace UnitTest
 {

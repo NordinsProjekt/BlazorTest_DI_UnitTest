@@ -1,6 +1,7 @@
 using DataSources;
-using SharedProject.DTO;
-using SharedProject.Interfaces;
+using Rules.DTO;
+using Rules.Interfaces;
+
 namespace UnitTest
 {
     [TestClass]
