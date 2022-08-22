@@ -82,7 +82,7 @@ namespace DataSources
                 people.Lastname = p[1];
             }
             else
-                throw new ArgumentException("Ett förnamn och ett efternam tack");
+                throw new ArgumentException("Ett förnamn och ett efternamn tack");
             return people;
         }
 

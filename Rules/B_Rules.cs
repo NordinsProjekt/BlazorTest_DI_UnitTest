@@ -47,7 +47,7 @@ namespace Rules
             return false;
         }
 
-        public bool IsValid(Object obj)
+        public bool IsValid(object obj)
         {
             PropertyInfo[] props = obj.GetType().GetProperties();
             foreach (PropertyInfo prop in props)
@@ -60,8 +60,8 @@ namespace Rules
                 if (prop.PropertyType == typeof(Double))
                     if ((double)prop.GetValue(obj, null) == 0)
                         return false;
-                if (prop.PropertyType == typeof(String))
-                    if ((String)prop.GetValue(obj, null) == "")
+                if (prop.PropertyType == typeof(string))
+                    if ((string)prop.GetValue(obj, null) == "")
                         return false;
             }
             return true;

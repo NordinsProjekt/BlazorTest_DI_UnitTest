@@ -57,5 +57,19 @@ namespace UnitTest
             dto_people p = new() { Age = 25, Firstname = "d", Lastname = "Johansson", Id = 2 };
             Assert.IsTrue(_rules.IsValid(p));
         }
+
+        [TestMethod]
+        public void TestIsValidPersonRecord_ShouldReturnTrue()
+        {
+            DTO_PersonRecord pr = new DTO_PersonRecord("Markus", "Andersson");
+            Assert.IsTrue(_rules.IsValid(pr));
+        }
+
+        [TestMethod]
+        public void TestIsValidPersonRecord_ShouldReturnFalse()
+        {
+            DTO_PersonRecord pr = new DTO_PersonRecord("Markus", "");
+            Assert.IsFalse(_rules.IsValid(pr));
+        }
     }
 }

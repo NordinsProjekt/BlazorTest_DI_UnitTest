@@ -13,6 +13,6 @@ namespace Rules
         public string GeneratePerson();
         public double CalculateSalary(dto_salaryMonth sm);
         public bool PaySalaryToEmployee(DTO_PaySalary ps);
-        public bool IsValid(Object obj);
+        public bool IsValid(object obj);
     }
 }
